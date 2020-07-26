@@ -1,7 +1,7 @@
 import Foundation
 
 protocol  ApiClient {
-	func fetchReviews(with id: Int, _ onComplete: @escaping (Reviews?, String?) -> Void)
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Reviews?, String?) -> Void)
 }
 
 private enum Path: String {
@@ -13,9 +13,9 @@ struct DefaultApiClient: ApiClient {
 	let service: NetworkAdaptor
 	let endpoint: EndpointUrlHelping
 
-	func fetchReviews(with id: Int, _ onComplete: @escaping (Reviews?, String?) -> Void) {
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Reviews?, String?) -> Void) {
 
-		let url = endpoint.reviewsUrl(with: Path.reviews.rawValue, tourId: String(id))
+		let url = endpoint.reviewsUrl(with: Path.reviews.rawValue, tourId: tourId, limit: limit, offset: offset)
 
 		service.request(url) { (data, error) in
 			do {

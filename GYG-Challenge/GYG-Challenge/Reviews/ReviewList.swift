@@ -15,10 +15,12 @@ struct ReviewList: View {
 
     var body: some View {
 		NavigationView {
-			List(viewModel.reviewViewModels) { item in
-				ReviewRow(viewModel: item)
+			List(0..<viewModel.reviewViewModels.count, id: \.self) { index in
+				ReviewRow(viewModel: self.viewModel.reviewViewModels[index])
+					.onAppear(perform: { self.viewModel.isLastIndex(index) }
+				)
 			}
-		.navigationBarTitle("Reviews")
+			.navigationBarTitle("Reviews")
 		}
     }
 }

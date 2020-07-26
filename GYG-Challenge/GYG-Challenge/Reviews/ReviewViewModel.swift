@@ -25,7 +25,7 @@ struct ReviewViewModel: Identifiable {
 	}
 
 	var date: String {
-		return self.formattedDate(dateString: model.created)
+		return isoDateFormatter(dateString: model.created)
 	}
 
 	var rating: Int {
@@ -45,14 +45,6 @@ struct ReviewViewModel: Identifiable {
 			return model.author.fullName
 		}
 		return model.author.fullName + " - " + countryName
-	}
-
-	func formattedDate(dateString: String) -> String {
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateStyle = .long
-		dateFormatter.timeStyle = .none
-
-		return dateFormatter.string(from: dateFormatter.date(from: dateString) ?? Date())
 	}
 
 }

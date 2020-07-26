@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3B2561324CD95B500F574DA /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2561224CD95B500F574DA /* DateFormatter.swift */; };
 		E3B32CD024CAF94A00FD43B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32CCF24CAF94A00FD43B1 /* AppDelegate.swift */; };
 		E3B32CD224CAF94A00FD43B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32CD124CAF94A00FD43B1 /* SceneDelegate.swift */; };
 		E3B32CD424CAF94A00FD43B1 /* ReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32CD324CAF94A00FD43B1 /* ReviewList.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E3B2561224CD95B500F574DA /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E3B32CCC24CAF94A00FD43B1 /* GYG-Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GYG-Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B32CCF24CAF94A00FD43B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3B32CD124CAF94A00FD43B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B32D1524CB059D00FD43B1 /* Supporting Views */,
-				E3B32D0624CAFF2D00FD43B1 /* Supporting Files */,
+				E3B32D0624CAFF2D00FD43B1 /* Helpers */,
 				E3B32D0524CAFEDA00FD43B1 /* APIClient */,
 				E3B32D0424CAFEC800FD43B1 /* NetworkService */,
 				E3B32D1424CB03F200FD43B1 /* Model */,
@@ -183,13 +185,14 @@
 			path = APIClient;
 			sourceTree = "<group>";
 		};
-		E3B32D0624CAFF2D00FD43B1 /* Supporting Files */ = {
+		E3B32D0624CAFF2D00FD43B1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				E3B32D0824CAFF5C00FD43B1 /* EndpointUrlHelper.swift */,
 				E3B32D0724CAFF5C00FD43B1 /* Environment.swift */,
+				E3B2561224CD95B500F574DA /* DateFormatter.swift */,
 			);
-			path = "Supporting Files";
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E3B32D1324CB039900FD43B1 /* Reviews */ = {
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3B2561324CD95B500F574DA /* DateFormatter.swift in Sources */,
 				E3B32D1724CB05B300FD43B1 /* Rating.swift in Sources */,
 				E3B32D0324CAFA8A00FD43B1 /* Review.swift in Sources */,
 				E3B32D1B24CB257500FD43B1 /* ReviewViewModel.swift in Sources */,

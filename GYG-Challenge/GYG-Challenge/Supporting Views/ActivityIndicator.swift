@@ -43,12 +43,12 @@ struct TestContentView: View {
 			})
 				.background((Color.blue))
 		}
-	.padding()
+		.padding()
 	}
 }
 
 struct TestContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestContentView()
-    }
+	static var previews: some View {
+		TestContentView()
+	}
 }

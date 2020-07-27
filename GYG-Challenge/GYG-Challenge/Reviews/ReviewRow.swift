@@ -35,6 +35,7 @@ struct ReviewRow: View {
 
 			HStack(alignment: .center) {
 				CircleImage(image: viewModel.userPhoto)
+					.onDisappear { self.viewModel.rowDisappeared() }
 				VStack(alignment: .leading) {
 					Text("reviewed by")
 						.font(.footnote)

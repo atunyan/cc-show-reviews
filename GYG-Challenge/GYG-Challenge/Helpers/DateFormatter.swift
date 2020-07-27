@@ -1,6 +1,6 @@
-
 import Foundation
 
+// write test on this
 func isoDateFormatter(dateString: String) -> String {
 	let isoDateFormatter = ISO8601DateFormatter()
 	let date = isoDateFormatter.date(from: dateString)

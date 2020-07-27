@@ -2,29 +2,29 @@
 import Foundation
 
 enum RequestHTTPMethod: String {
-  case get = "GET"
+	case get = "GET"
 }
 
 protocol NetworkAdaptor {
-  
-  func request(_ url: URL,
-               method: RequestHTTPMethod,
-               parameters: [String: Any]?,
-               headers: [String: String]?,
-               onComplete: @escaping ((Data?, Error?) -> Void))
+
+	func request(_ url: URL,
+							 method: RequestHTTPMethod,
+							 parameters: [String: Any]?,
+							 headers: [String: String]?,
+							 onComplete: @escaping ( Result<(Data, URLResponse) , Error>) -> Void )
 }
 
 extension NetworkAdaptor {
-  
-  func request(_ url: URL,
-               method: RequestHTTPMethod = .get,
-               parameters: [String : Any]? = nil,
-               headers: [String: String]? = nil,
-               onComplete: @escaping ((Data?, Error?) -> Void)) {
-    
-    request(url, method: method,
-            parameters: parameters,
-            headers: headers,
-            onComplete: onComplete)
-  }
+
+	func request(_ url: URL,
+							 method: RequestHTTPMethod = .get,
+							 parameters: [String : Any]? = nil,
+							 headers: [String: String]? = nil,
+							 onComplete: @escaping (Result<(Data, URLResponse), Error>) -> Void) {
+		request(url, method: method,
+						parameters: parameters,
+						headers: headers,
+						onComplete: onComplete)
+	}
 }
+

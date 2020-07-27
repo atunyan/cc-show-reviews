@@ -8,9 +8,10 @@
 
 import SwiftUI
 
-struct ReviewViewModel: Identifiable {
+final class ReviewViewModel: ObservableObject {
 
-	var model: Review
+	@Published var model: Review
+	@ObservedObject private var imageLoader = ImageLoader()
 
 	init(model: Review) {
 		self.model = model
@@ -36,15 +37,23 @@ struct ReviewViewModel: Identifiable {
 		return model.enjoyment
 	}
 
-	/*var profileImage: Image {
-		return Image(
-	}*/
-
 	var userInfo: String {
 		guard let countryName = model.author.country else {
 			return model.author.fullName
 		}
 		return model.author.fullName + " - " + countryName
+	}
+
+
+	var userPhoto: Image {
+		guard let urlString = model.author.photo, let imageUrl = URL(string: urlString) else {
+			return Image(systemName: "person")
+		}
+		imageLoader.load(url: imageUrl)
+		guard let uiImage = imageLoader.uiImage else {
+			return Image(systemName: "person")
+		}
+		return Image(uiImage: uiImage)
 	}
 
 }

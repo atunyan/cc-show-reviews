@@ -12,35 +12,40 @@ import Foundation
 final class ReviewListViewModel: ObservableObject {
 
 	@Published var reviewViewModels = [ReviewViewModel]()
-	@Published var isLoading = false
-	var pagination: Pagination?
+	@Published var errorMessage: String?
+	@Published var isLoading = true
+
+	private var pagination = Pagination(limit: 0, offset: 0)
+	private var isFetchingReviews = false
 	var apiClient: ApiClient
 	var tourId: Int
 
 	init(client: ApiClient, tourId: Int) {
 		self.apiClient = client
 		self.tourId = tourId
-		self.fetchReviews(limit: 10, offset: nil)
+		self.fetchReviews()
 	}
 
-	private func fetchReviews(limit: Int?, offset: Int?) {
-		apiClient.fetchReviews(with: tourId, limit: limit, offset: offset) { [weak self] (result, error) in
-			if let error = error {
-				print(error)
-				return
+	private func fetchReviews(limit: Int = 10, offset: Int = 0) {
+		isFetchingReviews = true
+		apiClient.fetchReviews(with: tourId, limit: limit, offset: offset) { [weak self] result in
+			switch result {
+			case .success(let reviews):
+				self?.pagination = reviews.pagination
+				self?.reviewViewModels += reviews.reviews.map{ ReviewViewModel(model: $0) }
+			case .failure(let error):
+				print("Error: \(error)")
 			}
-
-			guard let result = result else { return }
-			self?.pagination = result.pagination
-			self?.reviewViewModels += result.reviews.map{ ReviewViewModel(model: $0)}
+			self?.isLoading = false
+			self?.isFetchingReviews = false
 		}
 	}
 
-
-	func isLastIndex(_ index: Int) {
-		if index == reviewViewModels.count - 1 {
-			let newOffset = (pagination?.offset ?? 0) + (pagination?.limit ?? 10)
-			fetchReviews(limit: pagination?.limit, offset: newOffset)
+	//Test this method
+	func fetchMoreReviewIfEndIndex(_ index: Int) {
+		if !isFetchingReviews && index == reviewViewModels.count - 1 {
+			let newOffset = pagination.offset + pagination.limit
+			fetchReviews(limit: pagination.limit, offset: newOffset)
 		}
 	}
 }

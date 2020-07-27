@@ -1,11 +1,11 @@
 
-enum Errors: Error {
+enum NetworkError: Error {
   case invalidJSON
   case network(description: String)
   case unknown
 }
 
-extension Errors {
+extension NetworkError {
   var errorDescription: String {
     switch self {
     case .invalidJSON:

@@ -11,23 +11,29 @@ import Combine
 
 struct ReviewList: View {
 
-	@ObservedObject var viewModel: ReviewListViewModel
+	@ObservedObject var listViewModel: ReviewListViewModel
 
-    var body: some View {
-		NavigationView {
-			List(0..<viewModel.reviewViewModels.count, id: \.self) { index in
-				ReviewRow(viewModel: self.viewModel.reviewViewModels[index])
-					.onAppear(perform: { self.viewModel.isLastIndex(index) }
-				)
+	var body: some View {
+		VStack {
+			if listViewModel.isLoading {
+				ActivityIndicator(shouldAnimate: $listViewModel.isLoading)
+			} else {
+				NavigationView {
+			List(0..<listViewModel.reviewViewModels.count, id: \.self) { index in
+					ReviewRow(viewModel: self.listViewModel.reviewViewModels[index])
+						.onAppear(perform: { self.listViewModel.fetchMoreReviewIfEndIndex(index) }
+					)
+				}
+				.navigationBarTitle("Reviews")
+				}
 			}
-			.navigationBarTitle("Reviews")
 		}
-    }
+	}
 }
 
 struct ReviewList_Previews: PreviewProvider {
     static var previews: some View {
-		ReviewList(viewModel: ReviewListViewModel(client: DefaultApiClient(service: NetworkService(), endpoint: EndpointUrlHelper.default), tourId: 23776))
+		ReviewList(listViewModel: ReviewListViewModel(client: DefaultApiClient(service: NetworkService(), endpoint: EndpointUrlHelper.default), tourId: 23776))
 		//pass mocked api client
     }
 }

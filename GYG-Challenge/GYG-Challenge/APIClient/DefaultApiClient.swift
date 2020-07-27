@@ -1,7 +1,13 @@
 import Foundation
 
+
+enum SortType {
+	case asceding
+	case desceding
+}
+
 protocol  ApiClient {
-	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Reviews?, String?) -> Void)
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void)
 }
 
 private enum Path: String {
@@ -13,29 +19,21 @@ struct DefaultApiClient: ApiClient {
 	let service: NetworkAdaptor
 	let endpoint: EndpointUrlHelping
 
-	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Reviews?, String?) -> Void) {
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void) {
 
 		let url = endpoint.reviewsUrl(with: Path.reviews.rawValue, tourId: tourId, limit: limit, offset: offset)
 
-		service.request(url) { (data, error) in
-			do {
-				guard let data = data else {
-					if let error = error {
-						DispatchQueue.main.async {
-							onComplete(nil, Errors.network(description: error.localizedDescription).errorDescription)
-						}
-					}
-					return
+		service.request(url) { result in
+			switch result {
+			case .success(let data, _):
+				do {
+					let result = try JSONDecoder().decode(Reviews.self, from: data)
+					onComplete(.success(result))
+				} catch {
+					onComplete(.failure(NetworkError.invalidJSON))
 				}
-				let result = try JSONDecoder().decode(Reviews.self, from: data)
-
-				DispatchQueue.main.async {
-					onComplete(result, nil)
-				}
-			} catch {
-				DispatchQueue.main.async {
-					onComplete(nil, Errors.unknown.localizedDescription)
-				}
+			case .failure(let error):
+				onComplete(.failure(NetworkError.network(description: error.localizedDescription)))
 			}
 		}
 	}

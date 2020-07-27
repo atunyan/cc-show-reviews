@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ReviewRow: View {
 
-	var viewModel: ReviewViewModel
+	@ObservedObject var viewModel: ReviewViewModel
 
     var body: some View {
 		VStack(alignment: .leading) {
@@ -33,9 +34,7 @@ struct ReviewRow: View {
 				.padding(.bottom, 10)
 
 			HStack(alignment: .center) {
-
-				CircleImage()
-
+				CircleImage(image: viewModel.userPhoto)
 				VStack(alignment: .leading) {
 					Text("reviewed by")
 						.font(.footnote)

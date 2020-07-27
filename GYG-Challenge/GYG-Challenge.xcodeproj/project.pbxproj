@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E304E44724CDF58C00E6775A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E304E44624CDF58C00E6775A /* ActivityIndicator.swift */; };
+		E304E44F24CE3FE700E6775A /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E304E44E24CE3FE700E6775A /* AsyncImageLoader.swift */; };
 		E3B2561324CD95B500F574DA /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B2561224CD95B500F574DA /* DateFormatter.swift */; };
 		E3B32CD024CAF94A00FD43B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32CCF24CAF94A00FD43B1 /* AppDelegate.swift */; };
 		E3B32CD224CAF94A00FD43B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32CD124CAF94A00FD43B1 /* SceneDelegate.swift */; };
@@ -23,7 +25,7 @@
 		E3B32D0C24CAFF6100FD43B1 /* DefaultApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D0B24CAFF6100FD43B1 /* DefaultApiClient.swift */; };
 		E3B32D1024CAFF6900FD43B1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D0D24CAFF6900FD43B1 /* NetworkService.swift */; };
 		E3B32D1124CAFF6900FD43B1 /* NetworkAdaptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D0E24CAFF6900FD43B1 /* NetworkAdaptors.swift */; };
-		E3B32D1224CAFF6900FD43B1 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D0F24CAFF6900FD43B1 /* NetworkErrors.swift */; };
+		E3B32D1224CAFF6900FD43B1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D0F24CAFF6900FD43B1 /* NetworkError.swift */; };
 		E3B32D1724CB05B300FD43B1 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D1624CB05B300FD43B1 /* Rating.swift */; };
 		E3B32D1924CB05BE00FD43B1 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D1824CB05BE00FD43B1 /* CircleImage.swift */; };
 		E3B32D1B24CB257500FD43B1 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B32D1A24CB257500FD43B1 /* ReviewViewModel.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E304E44624CDF58C00E6775A /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		E304E44E24CE3FE700E6775A /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 		E3B2561224CD95B500F574DA /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E3B32CCC24CAF94A00FD43B1 /* GYG-Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GYG-Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B32CCF24CAF94A00FD43B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +74,7 @@
 		E3B32D0B24CAFF6100FD43B1 /* DefaultApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultApiClient.swift; sourceTree = "<group>"; };
 		E3B32D0D24CAFF6900FD43B1 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3B32D0E24CAFF6900FD43B1 /* NetworkAdaptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdaptors.swift; sourceTree = "<group>"; };
-		E3B32D0F24CAFF6900FD43B1 /* NetworkErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		E3B32D0F24CAFF6900FD43B1 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E3B32D1624CB05B300FD43B1 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		E3B32D1824CB05BE00FD43B1 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		E3B32D1A24CB257500FD43B1 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
@@ -171,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B32D0E24CAFF6900FD43B1 /* NetworkAdaptors.swift */,
-				E3B32D0F24CAFF6900FD43B1 /* NetworkErrors.swift */,
+				E3B32D0F24CAFF6900FD43B1 /* NetworkError.swift */,
 				E3B32D0D24CAFF6900FD43B1 /* NetworkService.swift */,
 			);
 			path = NetworkService;
@@ -191,6 +195,7 @@
 				E3B32D0824CAFF5C00FD43B1 /* EndpointUrlHelper.swift */,
 				E3B32D0724CAFF5C00FD43B1 /* Environment.swift */,
 				E3B2561224CD95B500F574DA /* DateFormatter.swift */,
+				E304E44E24CE3FE700E6775A /* AsyncImageLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			children = (
 				E3B32D1624CB05B300FD43B1 /* Rating.swift */,
 				E3B32D1824CB05BE00FD43B1 /* CircleImage.swift */,
+				E304E44624CDF58C00E6775A /* ActivityIndicator.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -363,13 +369,15 @@
 				E3B32D0024CAF9FE00FD43B1 /* ReviewRow.swift in Sources */,
 				E3B32D0A24CAFF5C00FD43B1 /* EndpointUrlHelper.swift in Sources */,
 				E3B32D1124CAFF6900FD43B1 /* NetworkAdaptors.swift in Sources */,
+				E304E44F24CE3FE700E6775A /* AsyncImageLoader.swift in Sources */,
 				E3B32D1024CAFF6900FD43B1 /* NetworkService.swift in Sources */,
 				E3B32D1D24CB258600FD43B1 /* ReviewListViewModel.swift in Sources */,
 				E3B32CD024CAF94A00FD43B1 /* AppDelegate.swift in Sources */,
 				E3B32CD224CAF94A00FD43B1 /* SceneDelegate.swift in Sources */,
-				E3B32D1224CAFF6900FD43B1 /* NetworkErrors.swift in Sources */,
+				E3B32D1224CAFF6900FD43B1 /* NetworkError.swift in Sources */,
 				E3B32CD424CAF94A00FD43B1 /* ReviewList.swift in Sources */,
 				E3B32D0C24CAFF6100FD43B1 /* DefaultApiClient.swift in Sources */,
+				E304E44724CDF58C00E6775A /* ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

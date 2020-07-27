@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		let viewModel = ReviewListViewModel(client: DefaultApiClient(service: NetworkService(), endpoint: EndpointUrlHelper.default), tourId: 23776)
 
-		let contentView = ReviewList(listViewModel: viewModel)
+		let contentView = ReviewList(viewModel: viewModel)
 
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {

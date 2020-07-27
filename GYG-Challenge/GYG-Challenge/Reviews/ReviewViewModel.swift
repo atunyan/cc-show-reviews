@@ -55,12 +55,4 @@ final class ReviewViewModel: ObservableObject {
 		}
 		return Image(uiImage: uiImage)
 	}
-
-	//test this method
-	func rowDisappeared() {
-		imageLoader.cancel()
-		//how to be sure that subscriber got cancelled?
-		// maybe covering it with test?
-	}
-
 }

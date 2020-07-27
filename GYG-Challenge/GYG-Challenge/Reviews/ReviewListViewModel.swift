@@ -11,14 +11,13 @@ import Foundation
 
 final class ReviewListViewModel: ObservableObject {
 
-	@Published var reviewViewModels = [ReviewViewModel]()
-	@Published var errorMessage: String?
-	@Published var isLoading = true
+	@Published private(set) var reviewViewModels = [ReviewViewModel]()
+	@Published var shouldShowActivityIndicator = true
 
-	private var pagination = Pagination(limit: 0, offset: 0)
-	private var isFetchingReviews = false
-	var apiClient: ApiClient
-	var tourId: Int
+	private(set) var pagination = Pagination(limit: 0, offset: 0)
+	private(set) var isFetchingReviews = false
+	private(set) var apiClient: ApiClient
+	private(set) var tourId: Int
 
 	init(client: ApiClient, tourId: Int) {
 		self.apiClient = client
@@ -28,6 +27,7 @@ final class ReviewListViewModel: ObservableObject {
 
 	private func fetchReviews(limit: Int = 10, offset: Int = 0) {
 		isFetchingReviews = true
+		shouldShowActivityIndicator = true
 		apiClient.fetchReviews(with: tourId, limit: limit, offset: offset) { [weak self] result in
 			switch result {
 			case .success(let reviews):
@@ -36,14 +36,14 @@ final class ReviewListViewModel: ObservableObject {
 			case .failure(let error):
 				print("Error: \(error)")
 			}
-			self?.isLoading = false
+			self?.shouldShowActivityIndicator = false
 			self?.isFetchingReviews = false
 		}
 	}
 
-	//Test this method
 	func fetchMoreReviewIfEndIndex(_ index: Int) {
 		if !isFetchingReviews && index == reviewViewModels.count - 1 {
+			print("Offset: \(pagination.offset)")
 			let newOffset = pagination.offset + pagination.limit
 			fetchReviews(limit: pagination.limit, offset: newOffset)
 		}

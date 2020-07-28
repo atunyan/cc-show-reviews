@@ -2,9 +2,6 @@
 //  ContentView.swift
 //  GYG-Challenge
 //
-//  Created by toxicsun on 7/24/20.
-//  Copyright © 2020 Anonymous. All rights reserved.
-//
 
 import SwiftUI
 import Combine

@@ -2,9 +2,7 @@
 //  CircleImage.swift
 //  GYG-Challenge
 //
-//  Created by toxicsun on 7/24/20.
-//  Copyright © 2020 Anonymous. All rights reserved.
-//
+
 
 import SwiftUI
 
@@ -25,6 +23,6 @@ struct CircleImage: View {
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-		CircleImage(image: Image("florian"))
+		CircleImage(image: Image(systemName: "person"))
     }
 }

@@ -2,9 +2,7 @@
 //  ActivityIndicator.swift
 //  GYG-Challenge
 //
-//  Created by toxicsun on 7/26/20.
-//  Copyright © 2020 Anonymous. All rights reserved.
-//
+
 
 import SwiftUI
 

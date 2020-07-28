@@ -1,13 +1,7 @@
 import Foundation
 
-
-enum SortType {
-	case asceding
-	case desceding
-}
-
 protocol  ApiClient {
-	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void)
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, sortQuery: String?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void)
 }
 
 private enum Path: String {
@@ -19,9 +13,9 @@ struct DefaultApiClient: ApiClient {
 	let service: NetworkAdaptor
 	let endpoint: EndpointUrlHelping
 
-	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void) {
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, sortQuery: String?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void) {
 
-		let url = endpoint.reviewsUrl(with: Path.reviews.rawValue, tourId: tourId, limit: limit, offset: offset)
+		let url = endpoint.reviewsUrl(with: Path.reviews.rawValue, tourId: tourId, limit: limit, offset: offset, sortQuery: sortQuery)
 
 		service.request(url) { result in
 			switch result {

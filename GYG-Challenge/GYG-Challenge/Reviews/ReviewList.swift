@@ -12,6 +12,37 @@ import Combine
 struct ReviewList: View {
 
 	@ObservedObject var viewModel: ReviewListViewModel
+	@State private var sortByRatingDesc = false
+	@State private var sortByDateDesc = true
+	@State private var sortType = SortType.date
+
+	var filterButtons: some View {
+		VStack {
+			HStack {
+				Button(action: {
+					self.sortByRatingDesc = !self.sortByRatingDesc
+					self.viewModel.sortByRating(desc: self.sortByRatingDesc)
+					self.sortType = SortType.rating
+				}) {
+					Text("Rating")
+					Image(systemName: (sortByRatingDesc ? "arrow.up" : "arrow.down"))
+				}
+				.foregroundColor(sortType == SortType.rating ? Color.orange : Color.gray)
+				.padding(10)
+
+				Button(action: {
+					self.sortByDateDesc = !self.sortByDateDesc
+					self.viewModel.sortByDate(desc: self.sortByDateDesc)
+					self.sortType = SortType.date
+				}) {
+					Text("Date")
+					Image(systemName: (sortByDateDesc ? "arrow.up" : "arrow.down"))
+				}
+				.foregroundColor(sortType == SortType.date ? Color.orange : Color.gray)
+				.padding(10)
+			}
+		}
+	}
 
 	var body: some View {
 		VStack {
@@ -25,7 +56,9 @@ struct ReviewList: View {
 						.onAppear(perform: { self.viewModel.fetchMoreReviewIfEndIndex(index)
 						})
 					}
-					.navigationBarTitle("Reviews")
+
+				.navigationBarTitle("Reviews")
+				.navigationBarItems(trailing: filterButtons)
 				}
 			}
 		}

@@ -13,7 +13,7 @@ final class ApiClientMock: ApiClient {
 						  totalCount: 10,
 						  pagination: Pagination(limit: 1, offset: 0))
 
-	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void) {
+	func fetchReviews(with tourId: Int, limit: Int?, offset: Int?, sortQuery: String?, _ onComplete: @escaping (Result<Reviews, NetworkError>) -> Void) {
 		onComplete(.success(reviews))
 	}
 }

@@ -22,7 +22,7 @@ struct EndpointUrlHelper: EndpointUrlHelping {
 						offset: offset,
 						sortQuery: sortQuery)
 	}
-//test this
+
 	func urlQuery(urlString: String, limit: Int?, offset: Int?, sortQuery: String?) -> URL {
 
 		var urlQuery = URLComponents(string: urlString)

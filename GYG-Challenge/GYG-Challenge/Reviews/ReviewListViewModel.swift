@@ -30,21 +30,21 @@ final class ReviewListViewModel: ObservableObject {
 	private var isFetchingReviews: Bool
 	private let apiClient: ApiClient
 	private let tourId: Int
-	private var sortQuery: SortParameter
+	private var sortParameter: SortParameter
 
 	init(client: ApiClient, tourId: Int) {
 		self.apiClient = client
 		self.tourId = tourId
 		self.limit = 10
 		self.isFetchingReviews = false
-		self.sortQuery = SortParameter.dateDesc
+		self.sortParameter = SortParameter.dateDesc
 
-		self.fetchReviewsWithPagination(limit: limit, offset: 0, sortQuery: sortQuery.rawValue)
+		self.fetchReviewsWithPagination(limit: limit, offset: reviewViewModels.count, sortParameter: sortParameter)
 	}
 
-	private func fetchReviewsWithPagination(limit: Int?, offset: Int?, sortQuery: String?) {
+	private func fetchReviewsWithPagination(limit: Int?, offset: Int?, sortParameter: SortParameter?) {
 		isFetchingReviews = true
-		apiClient.fetchReviews(with: tourId, limit: limit, offset: offset, sortQuery: sortQuery) { [weak self] result in
+		apiClient.fetchReviews(with: tourId, limit: limit, offset: offset, sortQuery: sortParameter?.rawValue) { [weak self] result in
 			switch result {
 			case .success(let reviews):
 				self?.reviewViewModels += reviews.reviews.map{ ReviewViewModel(model: $0) }
@@ -71,13 +71,12 @@ final class ReviewListViewModel: ObservableObject {
 
 	func fetchMoreReviewIfEndIndex(_ index: Int) {
 		if !isFetchingReviews && index == reviewViewModels.count - 1 {
-			let newOffset = reviewViewModels.count
-			fetchReviewsWithPagination(limit: limit, offset: newOffset, sortQuery: sortQuery.rawValue)
+			fetchReviewsWithPagination(limit: limit, offset: reviewViewModels.count, sortParameter: sortParameter)
 		}
 	}
 
 	func sortBy(parameter: SortParameter) {
-		sortQuery = parameter
+		sortParameter = parameter
 		fetchSortedReviews(by: parameter)
 	}
 

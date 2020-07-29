@@ -6,6 +6,11 @@
 import SwiftUI
 import Combine
 
+enum SortType {
+	case date
+	case rating
+}
+
 struct ReviewList: View {
 
 	@ObservedObject var viewModel: ReviewListViewModel

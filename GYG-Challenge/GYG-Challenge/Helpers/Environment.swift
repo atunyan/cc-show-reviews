@@ -9,5 +9,4 @@ struct Environment {
 		}
 		return url
 	}
-
 }

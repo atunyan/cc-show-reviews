@@ -300,6 +300,7 @@
 					};
 					E3B32CE124CAF94D00FD43B1 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = E3B32CCB24CAF94A00FD43B1;
 					};
 					E3B32CEC24CAF94D00FD43B1 = {
@@ -581,6 +582,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "GYG-ChallengeTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -591,6 +593,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "anonymous.GYG-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GYG-Challenge.app/GYG-Challenge";
@@ -602,6 +605,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "GYG-ChallengeTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;

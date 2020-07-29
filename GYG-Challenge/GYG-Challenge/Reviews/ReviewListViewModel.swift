@@ -6,11 +6,6 @@
 import Combine
 import Foundation
 
-enum SortType {
-	case date
-	case rating
-}
-
 enum SortParameter: String {
 	case ratingAsc = "rating:asc"
 	case ratingDesc = "rating:desc"
@@ -34,9 +29,13 @@ final class ReviewListViewModel: ObservableObject {
 		self.tourId = tourId
 		self.limit = 10
 		self.isFetchingReviews = false
+
+		// show reviews sorted by date:desc when no sorting is selected
 		self.sortParameter = SortParameter.dateDesc
 
-		self.fetchReviewsWithPagination(limit: limit, offset: reviewViewModels.count, sortParameter: sortParameter)
+		self.fetchReviewsWithPagination(limit: limit,
+										offset: reviewViewModels.count,
+										sortParameter: sortParameter)
 	}
 
 	private func fetchReviewsWithPagination(limit: Int?, offset: Int?, sortParameter: SortParameter?) {
@@ -72,7 +71,7 @@ final class ReviewListViewModel: ObservableObject {
 		}
 	}
 
-	func sortBy(parameter: SortParameter) {
+	private func sortBy(parameter: SortParameter) {
 		sortParameter = parameter
 		fetchSortedReviews(by: parameter)
 	}

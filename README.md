@@ -15,7 +15,7 @@ No setup is needed to run the project. Simply open project file with mentioned a
 
 ### Application
 Application is written in Swift with MVVM architecture. SwiftUI was used to implement UI. 
-- `ApiClientMock` class provides mocked data to run prject in `preview` mode. 
+- `ApiClientMock` class provides mocked data to run project in `preview` mode. 
 - pagination `limit` is hardcoded to 10
 - show reviews sorted by `date:desc` when no sorting option is specified
 

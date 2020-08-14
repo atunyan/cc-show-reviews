@@ -1,4 +1,4 @@
-#  GetYourGuide Coding Challenge
+# Coding Challenge
 
 ## Summary
 Build a single view application that fetches reviews from given `url` and shows review's author, message, title, date and rating. Beside main functional application provides the following functionality:
